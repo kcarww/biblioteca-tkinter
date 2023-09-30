@@ -1,8 +1,6 @@
 import tkinter as tk
 from tkinter import ttk, messagebox
 
-
-# Classe Livro base
 class Livro:
     def __init__(self, livro_id, titulo, autor, ano_publicacao):
         self.livro_id = livro_id
@@ -169,7 +167,7 @@ class App:
         paginas_entry.grid(row=3, column=1, padx=10, pady=10)
 
         def on_add():
-            # Pega os valores dos campos de entrada e adiciona o livro à biblioteca
+
             try:
                 titulo = titulo_entry.get()
                 autor = autor_entry.get()
@@ -189,12 +187,6 @@ class App:
         add_button = ttk.Button(popup, text="Adicionar", command=on_add)
         add_button.grid(row=4, column=0, columnspan=2, pady=20)
 
-    # E, dentro do método __init__ da classe App:
-    # ...
-
-
-    # ...
-
     def remove_book(self):
         selected_items = self.tree.selection()
         if not selected_items:
@@ -206,11 +198,9 @@ class App:
         self.update_list()
 
     def update_list(self):
-        # Limpa a árvore antes de atualizar
         for i in self.tree.get_children():
             self.tree.delete(i)
 
-        # Adiciona os livros na árvore
         for livro in self.biblioteca.livros:
             self.tree.insert('', 'end', values=(
             livro.livro_id, livro.titulo, livro.autor, livro.ano_publicacao, livro._Livro__status))
